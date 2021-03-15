@@ -44,6 +44,7 @@ function mutationActionDecoratorFactory<T extends Object>(params: MutationAction
       state: typeof target | Store<T>,
       payload: Payload & { [k in keyof T]: any }
     ) {
+      if (payload === undefined) return
       if (!params.mutate) {
         params.mutate = Object.keys(payload) as (keyof T)[]
       }
