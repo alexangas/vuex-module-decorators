@@ -481,6 +481,8 @@ function mutationActionDecoratorFactory(params) {
             });
         };
         var mutation = function (state, payload) {
+            if (payload === undefined)
+                return;
             if (!params.mutate) {
                 params.mutate = Object.keys(payload);
             }
